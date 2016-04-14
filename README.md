@@ -1,6 +1,7 @@
 # ScopedUnitOfWork
 
-####*Project in alpha phase*
+###*Project in alpha phase*
+###0.1.0.0
 
 ScopedUnitOfWork is a lightweight .NET implementation of commonly used Unit of Work and
 Repository patterns, extended with scoped functionality to improve read performance
@@ -88,22 +89,22 @@ using (IUnitOfWork unitOfWork = factory.Create(ScopeType.Transactional))
 }
 ```
 
-## Packages and configuration
+<!--## Packages and configuration
 
 Main *modules* (NuGet packages / assemblies) are:
 
   - ScopedUnitOfWork.Core - basic types IRepository and IUnitOfWork, which can be safely referenced
     from a domain assembly in let's say "onion" architecture (so that you maintain the *persistence ignorance* pattern).
   - ScopedUnitOfWork.**EF6** - Unit of Work and Repository implementations for Entity Framework 6.
-  - ScopedUnitOfWork.**EF.Core** - Unit of Work and Repository implementations for Entity Framework Core.
+  - ScopedUnitOfWork.**EF.Core** - Unit of Work and Repository implementations for Entity Framework Core.-->
 
-The framework is avaiable on NuGet for download.
+<!--The framework is avaiable on NuGet for download.
 
 Full Version | NuGet | NuGet Install
 ------------ | :-------------: | :-------------:
 ScopedUnitOfWork.Interfaces | <a href="https://www.nuget.org/packages/ScopedUnitOfWork.Interfaces/" target="_blank" alt="download nuget"><img src="https://img.shields.io/nuget/v/CoffeeApplied.Core.svg?style=flat-square" /></a> <a href="https://www.nuget.org/packages/CoffeeApplied.Core/" target="_blank" alt="download nuget"><img src="https://img.shields.io/nuget/dt/CoffeeApplied.Core.svg?style=flat-square" /></a> | ```PM> Install-Package ScopedUnitOfWork.Interfaces```
 ScopedUnitOfWork.EF6 | <a href="https://www.nuget.org/packages/ScopedUnitOfWork.EF6/" target="_blank" alt="download nuget"><img src="https://img.shields.io/nuget/v/CoffeeApplied.PersistenceFramework.EF6.svg?style=flat-square" /></a> <a href="https://www.nuget.org/packages/CoffeeApplied.PersistenceFramework.EF6/" target="_blank" alt="download nuget"><img src="https://img.shields.io/nuget/dt/CoffeeApplied.PersistenceFramework.EF6.svg?style=flat-square" /></a> | ```PM> Install-Package ScopedUnitOfWork.EF6```
-ScopedUnitOfWork.EF.Core | <a href="https://www.nuget.org/packages/ScopedUnitOfWork.EF.Core/" target="_blank" alt="download nuget"><img src="https://img.shields.io/nuget/v/CoffeeApplied.PersistenceFramework.EF7.svg?style=flat-square" /></a> <a href="https://www.nuget.org/packages/CoffeeApplied.PersistenceFramework.EF7/" target="_blank" alt="download nuget"><img src="https://img.shields.io/nuget/dt/CoffeeApplied.PersistenceFramework.EF7.svg?style=flat-square" /></a> | ```PM> Install-Package ScopedUnitOfWork.EF.Core```
+ScopedUnitOfWork.EF.Core | <a href="https://www.nuget.org/packages/ScopedUnitOfWork.EF.Core/" target="_blank" alt="download nuget"><img src="https://img.shields.io/nuget/v/CoffeeApplied.PersistenceFramework.EF7.svg?style=flat-square" /></a> <a href="https://www.nuget.org/packages/CoffeeApplied.PersistenceFramework.EF7/" target="_blank" alt="download nuget"><img src="https://img.shields.io/nuget/dt/CoffeeApplied.PersistenceFramework.EF7.svg?style=flat-square" /></a> | ```PM> Install-Package ScopedUnitOfWork.EF.Core```-->
 
 
 ## Configuration and first use
