@@ -66,6 +66,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="ScopedUnitOfWork.EF6.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScopedUnitOfWork.Framework\ScopedUnitOfWork.Framework.csproj">

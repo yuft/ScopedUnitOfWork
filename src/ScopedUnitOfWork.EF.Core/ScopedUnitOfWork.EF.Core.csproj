@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ScopedUnitOfWork.EF.Core.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ScopedUnitOfWork.Framework\ScopedUnitOfWork.Framework.csproj">
