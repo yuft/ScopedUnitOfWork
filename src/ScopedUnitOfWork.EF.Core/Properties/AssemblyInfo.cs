@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("ScopedUnitOfWork library implementation for Entity Framework Core, supporting ambient unit of work and ambient transaction management.")]
 [assembly: AssemblyConfiguration("")]
 
-[assembly: AssemblyInformationalVersion("0.1.0-rc1-final")]
+[assembly: AssemblyInformationalVersion("0.1.1-rc1-final")]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("f28db57e-75b3-49e7-849c-54dc874f1ed7")]

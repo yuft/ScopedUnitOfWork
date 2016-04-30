@@ -41,6 +41,7 @@
     <Compile Include="Exceptions\ConcurrentModificationException.cs" />
     <Compile Include="Exceptions\IncorrectUnitOfWorkUsageException.cs" />
     <Compile Include="Exceptions\TransactionFailedException.cs" />
+    <Compile Include="ScopedUnitOfWorkConfiguration.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitOfWorkFactory.cs" />

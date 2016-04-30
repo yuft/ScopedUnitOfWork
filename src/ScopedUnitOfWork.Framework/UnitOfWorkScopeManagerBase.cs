@@ -30,6 +30,8 @@ namespace ScopedUnitOfWork.Framework
         {
             ThrowIfUnknownScopeType(scopeType);
 
+            ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] new unit of work requested with " + scopeType);
+
             // in case there were no units of work before or the ones that existed completely ended and self-destructed
             CreateNewStackIfNoneExist();
 
@@ -38,6 +40,7 @@ namespace ScopedUnitOfWork.Framework
 
             if (scopeType == ScopeType.Transactional && !ScopeStack.HasTransaction())
             {
+                ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] creating and setting a new transaction");
                 ScopeStack.SetTransaction(CreateAndStartTransaction());
             }
 
@@ -60,6 +63,7 @@ namespace ScopedUnitOfWork.Framework
                 // commit only if topmost
                 if (!_scopeStack.AnyTransactionalUnitsOfWorkBesides(unitOfWork))
                 {
+                    ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] commiting transaction");
                     _scopeStack.Transaction.Commit();
                 }
             }
@@ -80,17 +84,22 @@ namespace ScopedUnitOfWork.Framework
                 // we check if not already commited / rolled-back
                 if (!unitOfWork.IsFinished && !_scopeStack.IsRolledBack())
                 {
+                    ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] rolling back transaction");
                     _scopeStack.RollBack();
                 }
 
                 // if very last transaction, we can remove the transactional portion of the stack
                 if (!_scopeStack.AnyTransactionalUnitsOfWork())
+                {
+                    ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] removing transaction since it is the last one");
                     _scopeStack.CleanTransaction();
+                }
             }
 
             // if last, remove the stack / context
             if (!_scopeStack.Stack.Any())
             {
+                ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] disposing the scope stack after last unit of work removed");
                 _scopeStack.Dispose();
                 _scopeStack = null;
             }
@@ -106,6 +115,7 @@ namespace ScopedUnitOfWork.Framework
         {
             if (ScopeStack == null)
             {
+                ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] creating new stack since none exists");
                 ScopeStack = new UoWScopeStack<TContext>(ServiceLocator.GetInstance<TContext>());
             }
         }

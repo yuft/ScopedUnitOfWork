@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/DenisBiondic/CoffeeApplied.Framework/master/projectIcon64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Extended package with configurable diagnostics</releaseNotes>
     <copyright>MIT</copyright>
     <language>en-US</language>
     <tags>UnitOfWork ScopedUnitOfWork Repository Pattern EntityFramework Interfaces Interface</tags>
