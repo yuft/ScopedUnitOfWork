@@ -8,7 +8,7 @@
     <owners>Denis Biondic</owners>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <projectUrl>https://github.com/DenisBiondic/ScopedUnitOfWork</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/DenisBiondic/CoffeeApplied.Framework/master/projectIcon64.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/DenisBiondic/ScopedUnitOfWork/master/projectIcon64.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Extended package with configurable diagnostics</releaseNotes>
