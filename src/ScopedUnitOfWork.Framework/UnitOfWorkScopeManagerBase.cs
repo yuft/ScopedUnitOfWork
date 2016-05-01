@@ -66,6 +66,14 @@ namespace ScopedUnitOfWork.Framework
                     ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] commiting transaction");
                     _scopeStack.Transaction.Commit();
                 }
+                else
+                {
+                    ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] Completing transactional uow but without commiting transaction since there is another transactional uow somewhere above.");
+                }
+            }
+            else
+            {
+                ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] Skipping completing a non-transactional UoW");
             }
         }
 
@@ -74,6 +82,8 @@ namespace ScopedUnitOfWork.Framework
             // simply ignore if not in the stack at all
             if (_scopeStack == null || !_scopeStack.Stack.Contains(unitOfWork))
                 return;
+
+            ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] removing " + unitOfWork);
 
             ThrowIfNotLastScoped(unitOfWork);
 
@@ -84,7 +94,7 @@ namespace ScopedUnitOfWork.Framework
                 // we check if not already commited / rolled-back
                 if (!unitOfWork.IsFinished && !_scopeStack.IsRolledBack())
                 {
-                    ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] rolling back transaction");
+                    ScopedUnitOfWorkConfiguration.LoggingAction("[ScopeManager] rolling back transaction for " + unitOfWork);
                     _scopeStack.RollBack();
                 }
 

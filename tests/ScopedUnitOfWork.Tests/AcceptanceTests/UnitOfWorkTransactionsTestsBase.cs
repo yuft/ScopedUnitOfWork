@@ -93,6 +93,32 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
             }
         }
 
+        [Test]
+        public void UsingTransactionsWithMultipleUoWsWhenTransactionalUoWIsUsedForQueryingShouldWork()
+        {
+            ScopedUnitOfWorkConfiguration.ConfigureDiagnosticsMode(Console.WriteLine, true);
+
+            using (var unitOfWork = GetFactory().Create(ScopeType.Transactional))
+            {
+                var customer = unitOfWork.GetRepository<ICustomerRepository>().FindByName("name");
+
+                // it does not really matter if customer is null, this is just for a simple query
+                if (customer == null)
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        using (var uow = GetFactory().Create())
+                        {
+                            uow.GetRepository<ICustomerRepository>().Add(CustomerGenerator.Generate());
+                            uow.Commit();
+                        }
+                    }
+                }
+
+                unitOfWork.Commit();
+            }
+        }
+
         private void CheckCustomerExistence(bool shouldExist, string customerName)
         {
             var customer = GetCustomerFromContextDirectly(customerName);

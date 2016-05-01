@@ -13,15 +13,21 @@ namespace ScopedUnitOfWork.Framework
         {
             Context = context;
             Stack = new Stack<IUnitOfWork>();
+
+            Id = UniqueIdGenerator.Generate();
         }
 
         public TContext Context { get; protected set; }
         public Stack<IUnitOfWork> Stack { get; protected set; } 
 
+        public string Id { get; private set; }
+
         public ITransactionWrapper Transaction { get; private set; } 
 
         public void Dispose()
         {
+            ScopedUnitOfWorkConfiguration.LoggingAction(this + "disposing, will dispose context and transaction");
+
             Context.Dispose();
             Transaction?.Dispose();
         }
@@ -33,6 +39,8 @@ namespace ScopedUnitOfWork.Framework
 
         public void RollBack()
         {
+            ScopedUnitOfWorkConfiguration.LoggingAction(this + "rollback requested");
+
             Transaction.Rollback();
             _isRolledBack = true;
         }
@@ -40,6 +48,8 @@ namespace ScopedUnitOfWork.Framework
         public void CleanTransaction()
         {
             _isRolledBack = false;
+
+            ScopedUnitOfWorkConfiguration.LoggingAction(this + "clean transaction requested, transaction exists: " + (Transaction != null));
 
             if (Transaction != null)
             {
@@ -68,6 +78,13 @@ namespace ScopedUnitOfWork.Framework
             return Stack.ToArray()
                 .Where(x => x.ScopeType == ScopeType.Transactional)
                 .Any(x => !ReferenceEquals(x, unitOfWork));
+        }
+
+        public override string ToString()
+        {
+            string stackItems = Stack.Aggregate("", (current, item) => current + item.ToString());
+
+            return $"[UowScopeStack {Id}] <<<" + stackItems + ">>> |  ";
         }
     }
 }

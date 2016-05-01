@@ -20,6 +20,8 @@ namespace ScopedUnitOfWork.Framework
             _scopeManager = scopeManager;
             _serviceLocator = serviceLocator;
 
+            Id = UniqueIdGenerator.Generate();
+
             ScopeType = scopeType;
         }
 
@@ -34,6 +36,8 @@ namespace ScopedUnitOfWork.Framework
             repository.SetUnitOfWork(this);
             return repository;
         }
+
+        public string Id { get; private set; }
         
         public ScopeType ScopeType { get; private set; }
         
@@ -49,6 +53,7 @@ namespace ScopedUnitOfWork.Framework
 
             try
             {
+                ScopedUnitOfWorkConfiguration.LoggingAction(this + "Persisting context changes...");
                 SaveContextChanges();
             }
             finally
@@ -57,10 +62,16 @@ namespace ScopedUnitOfWork.Framework
             }
         }
 
+        public override string ToString()
+        {
+            return $"[UnitOfWork {Id}, {ScopeType} ] ";
+        }
+
         protected abstract void SaveContextChanges();
 
         public void Dispose()
         {
+            ScopedUnitOfWorkConfiguration.LoggingAction(this + "Disposing...");
             _scopeManager.Remove(this);
 
             IsFinished = true;

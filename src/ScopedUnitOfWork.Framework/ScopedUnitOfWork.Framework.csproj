@@ -46,6 +46,7 @@
     <Compile Include="IScopeManager.cs" />
     <Compile Include="ITransactionWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UniqueIdGenerator.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="UnitOfWorkAwareRepository.cs" />
     <Compile Include="UnitOfWorkFactoryBase.cs" />
