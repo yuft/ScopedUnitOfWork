@@ -1,7 +1,7 @@
 # ScopedUnitOfWork
 
-###*Project in alpha phase*
-###0.1.0.0
+## *Project not maintained actively, but feel free to send pull requests or use the code to inspire your own implementations*
+#### *alpha* / 0.1.0.0
 
 ScopedUnitOfWork is a lightweight .NET implementation of commonly used Unit of Work and
 Repository patterns, extended with scoped functionality to improve read performance
