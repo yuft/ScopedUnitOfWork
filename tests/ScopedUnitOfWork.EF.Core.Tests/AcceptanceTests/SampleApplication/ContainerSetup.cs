@@ -1,5 +1,5 @@
 using Autofac;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using ScopedUnitOfWork.Interfaces;
 using ScopedUnitOfWork.Tests.AcceptanceTests.SampleApplication.Infrastructure;
 using ScopedUnitOfWork.Tests.AcceptanceTests.SampleApplication.SimpleDomain;

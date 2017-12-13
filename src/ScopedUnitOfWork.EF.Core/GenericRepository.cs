@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using ScopedUnitOfWork.Framework;
 using ScopedUnitOfWork.Interfaces;
 

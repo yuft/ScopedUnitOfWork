@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using ScopedUnitOfWork.Framework;
 using ScopedUnitOfWork.Interfaces;
 using ScopedUnitOfWork.Interfaces.Exceptions;

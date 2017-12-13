@@ -18,7 +18,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
                 uow.Commit();
 
                 Action action = () => uow.Commit();
-                action.ShouldThrow<InvalidOperationException>("*already commited*");
+                action.Should().Throw<InvalidOperationException>("*already commited*");
             }
         }
 
@@ -34,7 +34,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
                 uow.Dispose();
             };
 
-            action.ShouldNotThrow();
+            action.Should().NotThrow();
         }
          
         [Test]
@@ -50,7 +50,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
                 using (GetFactory().Create())
                 {
                     Action action1 = () => uow.Dispose();
-                    action1.ShouldThrow<IncorrectUnitOfWorkUsageException>();
+                    action1.Should().Throw<IncorrectUnitOfWorkUsageException>();
                 }
             }
 
@@ -59,7 +59,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
             var uowB = GetFactory().Create();
 
             Action action2 = () => uowA.Dispose();
-            action2.ShouldThrow<IncorrectUnitOfWorkUsageException>();
+            action2.Should().Throw<IncorrectUnitOfWorkUsageException>();
 
             // should be fine
             uowB.Dispose();
@@ -78,7 +78,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
                 uow.Dispose();
             };
 
-            action.ShouldNotThrow();
+            action.Should().NotThrow();
         }
 
         [Test]
@@ -92,7 +92,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
                 }
 
                 Action action = () => uow.Commit();
-                action.ShouldThrow<TransactionFailedException>();
+                action.Should().Throw<TransactionFailedException>();
             }
         }
 
@@ -103,7 +103,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
             uow.Dispose();
 
             Action action = () => uow.Commit();
-            action.ShouldThrow<InvalidOperationException>("*disposed*");
+            action.Should().Throw<InvalidOperationException>("*disposed*");
         }
 
         [Test]
@@ -118,7 +118,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
                 }
 
                 Action action = () => uow.Commit();
-                action.ShouldNotThrow();
+                action.Should().NotThrow();
             }
         }
 

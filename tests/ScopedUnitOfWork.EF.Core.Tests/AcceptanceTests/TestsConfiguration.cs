@@ -9,7 +9,7 @@ namespace ScopedUnitOfWork.EF.Core.Tests.AcceptanceTests
     {
         public static IContainer Container { get; private set; }
 
-        [SetUp]
+        [OneTimeSetUp]
         public static void CreateApplication()
         {
             Container = new ContainerSetup().Setup();
@@ -17,7 +17,6 @@ namespace ScopedUnitOfWork.EF.Core.Tests.AcceptanceTests
             // always make sure we have a fresh database
             using (var context = Container.Resolve<SampleContext>())
             {
-                context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
             }
         }

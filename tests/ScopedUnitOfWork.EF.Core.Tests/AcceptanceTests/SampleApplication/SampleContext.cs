@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 using ScopedUnitOfWork.Tests.AcceptanceTests.SampleApplication.SimpleDomain;
 
 namespace ScopedUnitOfWork.EF.Core.Tests.AcceptanceTests.SampleApplication

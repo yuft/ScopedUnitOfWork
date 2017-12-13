@@ -1,5 +1,5 @@
-﻿using Microsoft.Data.Entity;
-using Microsoft.Practices.ServiceLocation;
+﻿using CommonServiceLocator;
+using Microsoft.EntityFrameworkCore;
 using ScopedUnitOfWork.Framework;
 using ScopedUnitOfWork.Interfaces;
 using ScopedUnitOfWork.Interfaces.Exceptions;

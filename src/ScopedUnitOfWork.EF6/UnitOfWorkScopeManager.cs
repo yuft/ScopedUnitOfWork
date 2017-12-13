@@ -1,5 +1,5 @@
 using System.Data.Entity;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using ScopedUnitOfWork.Framework;
 using ScopedUnitOfWork.Interfaces;
 

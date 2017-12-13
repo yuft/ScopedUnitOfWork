@@ -1,6 +1,6 @@
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Storage;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using ScopedUnitOfWork.Framework;
 using ScopedUnitOfWork.Interfaces;
 
@@ -27,9 +27,9 @@ namespace ScopedUnitOfWork.EF.Core
 
         class TransactionWrapper : ITransactionWrapper
         {
-            private readonly IRelationalTransaction _transaction;
+            private readonly IDbContextTransaction _transaction;
 
-            public TransactionWrapper(IRelationalTransaction transaction)
+            public TransactionWrapper(IDbContextTransaction transaction)
             {
                 _transaction = transaction;
             }

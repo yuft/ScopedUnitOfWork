@@ -10,8 +10,17 @@ namespace ScopedUnitOfWork.EF6.Tests.AcceptanceTests
     {
         public static IContainer Container { get; private set; }
 
-        [SetUp]
+        [OneTimeSetUp]
         public static void CreateApplication()
+        {
+            Container = new ContainerSetup().Setup();
+
+            // always make sure we have a fresh database
+            Database.SetInitializer(new DropCreateDatabaseAlways<SampleContext>());
+        }
+
+        [OneTimeTearDown]
+        public static void TearDownApplication()
         {
             Container = new ContainerSetup().Setup();
 

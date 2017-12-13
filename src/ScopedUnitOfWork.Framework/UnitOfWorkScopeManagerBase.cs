@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using ScopedUnitOfWork.Interfaces;
 using ScopedUnitOfWork.Interfaces.Exceptions;
 

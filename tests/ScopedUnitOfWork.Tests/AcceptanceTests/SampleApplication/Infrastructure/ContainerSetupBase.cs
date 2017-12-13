@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
 using Autofac.Features.ResolveAnything;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 
 namespace ScopedUnitOfWork.Tests.AcceptanceTests.SampleApplication.Infrastructure
 {

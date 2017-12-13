@@ -89,7 +89,7 @@ namespace ScopedUnitOfWork.Tests.AcceptanceTests
                         uow.Dispose();
                     };
 
-                action.ShouldNotThrow();
+                action.Should().NotThrow();
             }
         }
 

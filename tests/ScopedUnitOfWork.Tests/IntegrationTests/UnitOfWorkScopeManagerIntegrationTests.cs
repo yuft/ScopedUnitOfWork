@@ -1,6 +1,6 @@
 ﻿using System;
+using CommonServiceLocator;
 using FluentAssertions;
-using Microsoft.Practices.ServiceLocation;
 using NSubstitute;
 using NUnit.Framework;
 using ScopedUnitOfWork.Framework;
@@ -13,7 +13,7 @@ namespace ScopedUnitOfWork.Tests.IntegrationTests
     {
         private UnitOfWorkScopeManagerBase<DummyContext> _manager;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Initialize()
         {
             var resolver = Substitute.For<IServiceLocator>();
